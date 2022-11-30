@@ -1,7 +1,6 @@
 @extends('layouts.app')
-@section('title', '- Contact Us')
+@section('title', '- Projects')
 @section('content')
-
     <body
         class="page page-id-13 page-parent page-template page-template-template-projects page-template-template-projects-php"
         id="">
@@ -10,9 +9,15 @@
         @foreach ($project_categories as $project_category)
             <div class="mySlides vegas-slide vegas-transition-fade vegas-transition-fade-in"
                 style="transition: all 2500ms ease 0s;">
-                <div class="vegas-slide-inner"
-                    style="background-image: url({{ $project_category->photo ?? '' }}); background-color: rgb(0, 0, 0); background-position: center center; background-size: cover;">
-                </div>
+                <a href="{{ route('project.show', $project_category->id) }}">
+                    <div class="vegas-slide-inner"
+                        style="background-image: url({{ $project_category->photo ?? '' }}); background-color: rgb(0, 0, 0); background-position: center center; background-size: cover;">
+                    </div>
+
+                    <div class="project-info">
+                        <h2 class="project-title">{{ $project_category->title ?? '' }}</h2>
+                    </div>
+                </a>
             </div>
         @endforeach
 

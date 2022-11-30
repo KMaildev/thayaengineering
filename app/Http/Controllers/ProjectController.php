@@ -19,16 +19,6 @@ class ProjectController extends Controller
         return view('project.index', compact('project_categories_lists'));
     }
 
-    public function ProjectCategoriesJson()
-    {
-        $project_categories_lists = ProjectCategory::all();
-        return json_encode(array(
-            "statusCode" => 200,
-            "project_categories_lists" => $project_categories_lists,
-        ));
-    }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -71,8 +61,8 @@ class ProjectController extends Controller
      */
     public function detail($id)
     {
-        $projects = Project::findOrFail($id);
-        return view('project.detail', compact('projects'));
+        $project_details = Project::where('project_categorie_id', $id)->first();
+        return view('project.detail', compact('project_details'));
     }
 
     /**
