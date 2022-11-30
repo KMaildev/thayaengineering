@@ -35,9 +35,7 @@
 
             <li id="menu-item-24"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24">
-
                 <a href="{{ route('project.index') }}">Projects</a>
-
                 <ul class="sub-menu">
                     @foreach ($project_categories as $project_category)
                         <li id="menu-item-41"
@@ -50,8 +48,21 @@
                 </ul>
             </li>
 
-            <li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30">
-                <a href="services/index.html">Services</a>
+            <li id="menu-item-24"
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24">
+                <a href="javascript:void(0)">
+                    Our Services
+                </a>
+                <ul class="sub-menu">
+                    @foreach ($service_categories as $service_categorie)
+                        <li id="menu-item-41"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41">
+                            <a href="{{ route('service.show', $service_categorie->id) }}">
+                                {{ $service_categorie->title ?? '' }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </li>
 
             <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33">
