@@ -4,16 +4,47 @@
 
     <body
         class="page page-id-13 page-parent page-template page-template-template-projects page-template-template-projects-php"
-        id="thayamain">
+        id="">
         @include('layouts.menu')
+
+        @foreach ($project_categories as $project_category)
+            <div class="mySlides vegas-slide vegas-transition-fade vegas-transition-fade-in"
+                style="transition: all 2500ms ease 0s;">
+                <div class="vegas-slide-inner"
+                    style="background-image: url({{ $project_category->photo ?? '' }}); background-color: rgb(0, 0, 0); background-position: center center; background-size: cover;">
+                </div>
+            </div>
+        @endforeach
+
         <div id="slidesNav">
-            <a href="#" class="arrow previous" rel="previous">Previous</a>
-            <a href="#" class="arrow next" rel="next">Next</a>
+            <a onclick="plusSlides(-1)" href="javascript:void(0)" class="arrow previous" rel="previous">Previous</a>
+            <a onclick="plusSlides(1)" href="javascript:void(0)" class="arrow next" rel="next">Next</a>
         </div>
-        <div class="project-info">
-            <h2 class="project-title"></h2>
-        </div>
+
         <script>
+            let slideIndexJS = 1;
+            showSlides(slideIndexJS);
+
+            function plusSlides(n) {
+                showSlides(slideIndexJS += n);
+            }
+
+            function showSlides(n) {
+                let i;
+                let slidesjs = document.getElementsByClassName("mySlides");
+                if (n > slidesjs.length) {
+                    slideIndexJS = 1
+                }
+                if (n < 1) {
+                    slideIndexJS = slidesjs.length
+                }
+                for (i = 0; i < slidesjs.length; i++) {
+                    slidesjs[i].style.display = "none";
+                }
+                slidesjs[slideIndexJS - 1].style.display = "block";
+            }
+
+
             $(document).ready(function() {
                 var slider = $("#thayamain, body");
                 var currentSlidePage = '';
@@ -21,35 +52,8 @@
                     window.location.href = currentSlidePage;
                 });
 
-                var json = [{
-                        "id": "1",
-                        "msg": "hi",
-                        "tid": "2013-05-05 23:35",
-                        "fromWho": "hello1@email.se"
-                    },
-                    {
-                        "id": "2",
-                        "msg": "there",
-                        "tid": "2013-05-05 23:45",
-                        "fromWho": "hello2@email.se"
-                    }
-                ];
-
-
                 $(slider).vegas({
-                    slides: [{
-                            src: "http://spinearchitects.com/wp-content/uploads/2015/09/Commercial.jpg",
-                            title: "Commercial",
-                            description: "",
-                            page: "/projects/commercial"
-                        },
-                        {
-                            src: "http://spinearchitects.com/wp-content/uploads/2015/09/Commercial.jpg",
-                            title: "Commercial",
-                            description: "",
-                            page: "/projects/commercial"
-                        },
-                    ],
+                    slides: [],
 
                     transition: 'fade',
                     transitionDuration: 2500,
@@ -58,7 +62,6 @@
                     },
                     play: function(index, slideSettings) {
                         //console.log("Play");
-                        console.log(slideSettings);
                     },
                     walk: function(index, slideSettings) {
                         currentSlidePage = slideSettings.page;
@@ -66,24 +69,6 @@
                     }
                 });
             });
-
-            function autoCall() {
-                var url = '{{ url('project_categories_json') }}';
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    method: 'GET',
-                    url: url,
-                    success: function(data) {
-
-                    },
-                    error: function(data) {}
-                });
-            }
-            autoCall();
         </script>
         @include('layouts.footer')
     </body>
