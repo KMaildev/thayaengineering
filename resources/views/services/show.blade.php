@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title', '- About')
 @section('content')
-
     <style>
         .snip1527 {
+            padding: 10px;
+            margin: 30px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
             color: #ffffff;
             float: left;
@@ -11,7 +12,7 @@
             font-size: 16px;
             margin: 10px 1%;
             max-width: 310px;
-            min-width: 250px;
+            min-width: 290px;
             overflow: hidden;
             position: relative;
             text-align: left;
@@ -111,27 +112,61 @@
             -webkit-transform: scale(1.1);
             transform: scale(1.1);
         }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
     </style>
 
     <body class="page page-id-7 page-template-default" id="thayamain">
         @include('layouts.menu')
+        <div class="row">
+            <div class="column">
+                <h3>
+                    <span style="color: #ed8e27;">
+                        <strong>
+                            {{ $service_category_data->title ?? '' }}
+                        </strong>
+                    </span>
+                </h3>
 
-        @foreach ($services as $service)
-            <figure class="snip1527">
-                <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg"
-                        alt="pr-sample23" /></div>
-                <figcaption>
-                    <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
-                    <h3>The World Ended Yesterday</h3>
-                    <p>
+                @foreach ($services as $service)
+                    <figure class="snip1527">
+                        <div class="image">
+                            <img src="{{ $service->photo }}" alt="pr-sample23"
+                                style="width: 100%; height: 300px; object-position: center; max-width: 463px;" />
+                        </div>
+                        <div style="background-color: #4E9A42; padding: 20px; height: 80px; text-align: center">
+                            <p style="font-size: 16px;">
+                                {{ $service->title ?? '' }}
+                            </p>
+                        </div>
+                    </figure>
+                @endforeach
 
-                        You know what we need, Hobbes? We need an attitude. Yeah, you can't be cool if you don't have an
-                        attitude.
-                    </p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-        @endforeach
+            </div>
+
+            <div class="column">
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium minus dolore temporibus,
+                    molestias minima est, ducimus sequi quos quam, dignissimos nobis harum. Deleniti quod veniam
+                    reiciendis vitae magni rem dolore!
+                </p>
+            </div>
+        </div>
+
     </body>
     @include('layouts.footer')
     <script>
@@ -140,5 +175,26 @@
                 $(this).removeClass("hover");
             }
         );
+
+        $(document).ready(function() {
+            var slider = $("#thayamain, body");
+            $(slider).vegas({
+                slides: [{
+                    src: '{{ asset('data/service_bg.jpeg') }}'
+                }],
+                animation: 'random',
+                init: function(globalSettings) {
+                    //console.log("Init");
+                },
+                play: function(index, slideSettings) {
+                    //console.log("Play");
+                },
+                walk: function(index, slideSettings) {
+                    //console.log("Slide index " + index + " image " + slideSettings.title);
+                    //$('.project-title').html(slideSettings.title);
+                    //$('.project-description').html(slideSettings.description);
+                }
+            });
+        });
     </script>
 @endsection

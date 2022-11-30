@@ -48,8 +48,7 @@
                 </ul>
             </li>
 
-            <li id="menu-item-24"
-                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24">
+            <li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-24">
                 <a href="javascript:void(0)">
                     Our Services
                 </a>
