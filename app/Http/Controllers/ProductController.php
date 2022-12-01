@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
-        return view('news.index', compact('news'));
+        //
     }
 
     /**
@@ -47,9 +47,9 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        News::find($id)->increment('viewer');
-        $new = News::findOrFail($id);
-        return view('news.show', compact('new'));
+        $product_categories_data = ProductCategory::findOrFail($id);
+        $products = Product::where('product_categorie_id', $id)->get();
+        return view('product.show', compact('product_categories_data', 'products'));
     }
 
     /**

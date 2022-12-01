@@ -48,6 +48,21 @@
                 </ul>
             </li>
 
+            <li id="menu-item-24"
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24">
+                <a href="{{ route('project.index') }}">Products</a>
+                <ul class="sub-menu">
+                    @foreach ($product_categories as $product_categoy)
+                        <li id="menu-item-41"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41">
+                            <a href="{{ route('product.show', $product_categoy->id) }}">
+                                {{ $product_categoy->title ?? '' }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
+
             <li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-24">
                 <a href="javascript:void(0)">
                     Our Services
