@@ -79,10 +79,20 @@
                 </ul>
             </li>
 
-            <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33">
-                <a href="news/index.html">
+            <li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-24">
+                <a href="javascript:void(0)">
                     Download
                 </a>
+                <ul class="sub-menu">
+                    @foreach ($download_categories as $download_categorie)
+                        <li id="menu-item-41"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41">
+                            <a href="{{ route('service.show', $download_categorie->id) }}">
+                                {{ $download_categorie->title ?? '' }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </li>
 
             <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33">
