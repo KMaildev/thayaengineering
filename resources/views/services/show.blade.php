@@ -112,61 +112,36 @@
             -webkit-transform: scale(1.1);
             transform: scale(1.1);
         }
-
-        /* Create two equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 50%;
-            padding: 10px;
-            height: 300px;
-            /* Should be removed. Only for demonstration */
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
     </style>
 
     <body class="page page-id-7 page-template-default" id="thayamain">
         @include('layouts.menu')
         <div class="row">
-            <div class="column">
-                <h3>
-                    <span style="color: #ed8e27;">
-                        <strong>
-                            {{ $service_category_data->title ?? '' }}
-                        </strong>
-                    </span>
-                </h3>
+            <h3 style="text-align: center; padding-top: 20px;">
+                <span style="color: #ed8e27; font-size: 20px;">
+                    <strong>
+                        {{ $service_category_data->title ?? '' }}
+                    </strong>
+                </span>
+            </h3>
 
-                @foreach ($services as $service)
+            @foreach ($services as $service)
+                <a href="{{ route('service_detail', $service->id) }}">
                     <figure class="snip1527">
                         <div class="image">
                             <img src="{{ $service->photo }}" alt="pr-sample23"
                                 style="width: 100%; height: 300px; object-position: center; max-width: 463px;" />
                         </div>
                         <div style="background-color: #4E9A42; padding: 20px; height: 80px; text-align: center">
-                            <p style="font-size: 16px;">
+                            <p style="font-size: 18px;">
                                 {{ $service->title ?? '' }}
                             </p>
                         </div>
                     </figure>
-                @endforeach
+                </a>
+            @endforeach
 
-            </div>
-
-            <div class="column">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium minus dolore temporibus,
-                    molestias minima est, ducimus sequi quos quam, dignissimos nobis harum. Deleniti quod veniam
-                    reiciendis vitae magni rem dolore!
-                </p>
-            </div>
         </div>
-
     </body>
     @include('layouts.footer')
     <script>
