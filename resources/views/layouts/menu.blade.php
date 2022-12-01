@@ -71,7 +71,7 @@
             </li>
 
             <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33">
-                <a href="news/index.html">News</a>
+                <a href="{{ route('news.index') }}">News</a>
             </li>
 
             <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37">
