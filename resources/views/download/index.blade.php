@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', '- News & Blog')
 @section('content')
-
     <style>
         /* Start */
         .news_hor {
@@ -9,7 +8,6 @@
             position: relative;
             overflow: hidden;
             margin: 10px;
-            max-width: 100%;
             width: 100%;
             /* background-color: #ffffff; */
             color: black;
@@ -22,7 +20,7 @@
         }
 
         .news_hor img {
-            width: 365px;
+            width: 270px;
             float: left;
             position: relative;
             height: 100%;
@@ -32,7 +30,6 @@
             z-index: 1;
             padding: 20px;
         }
-
 
         .news_hor figcaption {
             padding: 1%;
@@ -49,6 +46,23 @@
             margin: 3px 0;
             color: white;
         }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            padding: 10px 24px;
+        }
     </style>
 
     <body class="home page page-id-504 page-template page-template-template-projects page-template-template-projects-php"
@@ -57,20 +71,23 @@
         @include('layouts.menu')
         <h3 style="text-align: center; padding-top: 20px;">
             <span style="color: #ed8e27; font-size: 25px; font-weight: bold;">
-                {{ $product_categories_data->title ?? '' }}
+                {{ $download_categories_data->title ?? '' }}
             </span>
         </h3>
-        @foreach ($products as $product)
+        @foreach ($downloads as $download)
             <figure class="news_hor">
-                <img src="{{ $product->photo ?? '' }}" alt="Thaya Engineering" />
+                <img src="{{ $download->photo ?? '' }}" alt="Thaya Engineering" />
                 <figcaption>
                     <h3>
-                        {{ $product->product_title ?? '' }}
+                        {{ $download->product_title ?? '' }}
                     </h3>
                     <p style="font-size: 20px;">
-                        {!! $product->description ?? '' !!}
+                        {!! Str::limit($download->description, 500) !!}
                     </p>
                 </figcaption>
+                <a href="{{ route('download_detail', $download->id) }}" class="button button1">
+                    Read More
+                </a>
             </figure>
         @endforeach
     </body>

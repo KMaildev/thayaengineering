@@ -1,26 +1,24 @@
-{{-- <div class="spine-logo">
-    <a href="{{ route('home') }}">
-        <img src="wp-content/themes/thaya/images/spine-logo.png" alt="SPINE Architects Logo" />
-    </a>
-</div>
 <div id="navbar" class="navbar">
     <div id="brand">
         <a href="{{ route('home') }}">
-            <img src="wp-content/themes/thaya/images/spine-logo-mobile.png" alt="SPINE Architects" />
+            <img src="{{ asset('data/logo.png') }}" alt="Thaya Engineering" />
         </a>
     </div>
     <div id="hamburger">
         <a href="#" class="hamburger">=</a>
     </div>
     <div class="clear"></div>
-</div> --}}
+</div>
 
 <nav role="full-horizontal">
-    <div class="nav-yellobar">
-        &nbsp;
-    </div>
     <div class="menu-main-menu-container">
         <ul id="menu-main-menu" class="menu">
+
+            <li id="menu-item-514" class="d-none d-lg-block">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('data/logo.png') }}" alt="Thaya Engineering" style="width: 150px;" />
+                </a>
+            </li>
 
             <li id="menu-item-514"
                 class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-504 current_page_item menu-item-514">
@@ -87,7 +85,7 @@
                     @foreach ($download_categories as $download_categorie)
                         <li id="menu-item-41"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41">
-                            <a href="{{ route('service.show', $download_categorie->id) }}">
+                            <a href="{{ route('download.show', $download_categorie->id) }}">
                                 {{ $download_categorie->title ?? '' }}
                             </a>
                         </li>
@@ -101,6 +99,10 @@
 
             <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37">
                 <a href="{{ route('contact.index') }}">Contact Us</a>
+            </li>
+
+            <li id="menu-item-514">
+                <img src="{{ asset('data/iso.jpeg') }}" alt="Thaya Engineering" style="width: 100px;" />
             </li>
         </ul>
     </div>

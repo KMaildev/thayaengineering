@@ -4,6 +4,7 @@
 
     <body class="home page page-id-504 page-template page-template-template-projects page-template-template-projects-php"
         id="thayamain">
+
         @include('layouts.menu')
 
         <div id="slidesNav">

@@ -2,7 +2,9 @@
 @section('title', '- Contact Us')
 @section('content')
 
-    <body class="page page-id-34 page-template-default" id="thayamain">
+    <body class="home page page-id-504 page-template page-template-template-projects page-template-template-projects-php"
+        id="thayamain">
+
         @include('layouts.menu')
 
         <div class="container text-white">

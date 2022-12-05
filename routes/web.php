@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\DownloadUserController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
@@ -24,3 +25,6 @@ Route::resource('news', NewsController::class);
 Route::resource('product', ProductController::class);
 
 Route::resource('download', DownloadController::class);
+Route::get('download_detail/{id}', [DownloadController::class, 'detail'])->name('download_detail');
+
+Route::resource('download_user', DownloadUserController::class);

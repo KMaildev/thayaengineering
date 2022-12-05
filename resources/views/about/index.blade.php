@@ -2,8 +2,10 @@
 @section('title', '- About')
 @section('content')
 
-    <body class="page page-id-7 page-template-default" id="thayamain">
-        @include('layouts.menu')
+    @include('layouts.menu')
+
+    <body class="home page page-id-504 page-template page-template-template-projects page-template-template-projects-php"
+        id="thayamain">
 
         <div class="container text-white">
             <div class="row">
@@ -91,7 +93,7 @@
                     var slider = $("#thayamain, body");
                     $(slider).vegas({
                         slides: [{
-                            src: '{{ asset("data/about/1.JPG") }}'
+                            src: '{{ asset('data/about/1.JPG') }}'
                         }],
                         animation: 'random',
                         init: function(globalSettings) {

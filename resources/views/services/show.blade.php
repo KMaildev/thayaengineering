@@ -114,7 +114,9 @@
         }
     </style>
 
-    <body class="page page-id-7 page-template-default" id="thayamain">
+    <body class="home page page-id-504 page-template page-template-template-projects page-template-template-projects-php"
+        id="thayamain">
+
         @include('layouts.menu')
         <div class="row">
             <h3 style="text-align: center; padding-top: 20px;">
@@ -126,19 +128,21 @@
             </h3>
 
             @foreach ($services as $service)
-                <a href="{{ route('service_detail', $service->id) }}">
-                    <figure class="snip1527">
-                        <div class="image">
-                            <img src="{{ $service->photo }}" alt="pr-sample23"
-                                style="width: 100%; height: 300px; object-position: center; max-width: 463px;" />
-                        </div>
-                        <div style="background-color: #4E9A42; padding: 20px; height: 80px; text-align: center">
-                            <p style="font-size: 18px;">
-                                {{ $service->title ?? '' }}
-                            </p>
-                        </div>
-                    </figure>
-                </a>
+                <div class="col-md-3">
+                    <a href="{{ route('service_detail', $service->id) }}">
+                        <figure class="snip1527">
+                            <div class="image">
+                                <img src="{{ $service->photo }}" alt="pr-sample23"
+                                    style="width: 100%; height: 300px; object-position: center; max-width: 463px;" />
+                            </div>
+                            <div style="background-color: #4E9A42; padding: 20px; height: 80px; text-align: center">
+                                <p style="font-size: 18px;">
+                                    {{ $service->title ?? '' }}
+                                </p>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
             @endforeach
 
         </div>
