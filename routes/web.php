@@ -26,5 +26,6 @@ Route::resource('product', ProductController::class);
 
 Route::resource('download', DownloadController::class);
 Route::get('download_detail/{id}', [DownloadController::class, 'detail'])->name('download_detail');
+Route::get('store_download_history', [DownloadUserController::class, 'StoreDownloadHistory'])->name('store_download_history');
 
 Route::resource('download_user', DownloadUserController::class);

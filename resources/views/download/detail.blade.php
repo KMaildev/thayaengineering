@@ -67,7 +67,8 @@
                     @endphp
                     @foreach ($values as $download_file)
                         @if ($download_session == 'have_download_session')
-                            <a href="{{ $download_file }}" class="button button1" target="_blank">
+                            <a onclick="downloadFile('{{ $download_file }}')" href="{{ $download_file }}"
+                                class="button button1" target="_blank">
                                 <i class="fa-solid fa-file-pdf"></i>
                                 PDF File
                             </a>
@@ -165,5 +166,27 @@
                 }
             });
         });
+
+        function downloadFile(download_file_name) {
+            var url = '{{ url('store_download_history') }}';
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var download_file_name = download_file_name;
+            $.ajax({
+                method: 'GET',
+                url: url,
+                data: {
+                    download_file_name: download_file_name,
+                },
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {}
+            });
+        }
     </script>
 @endsection

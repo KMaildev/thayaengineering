@@ -28,7 +28,6 @@ class DownloadController extends Controller
     {
         $download_session = session()->get('have_download_session') ?? 'no';
         $fields = Field::all();
-
         $download = Download::findOrFail($id);
         return view('download.detail', compact('download', 'download_session', 'fields'));
     }
