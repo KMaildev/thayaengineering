@@ -10,7 +10,7 @@
     <div class="clear"></div>
 </div>
 
-<nav role="full-horizontal">
+<nav role="full-horizontal" style="background: rgba(33, 34, 33, 0.3); maring-top: 0px !important">
     <div class="menu-main-menu-container">
         <ul id="menu-main-menu" class="menu">
 
@@ -102,7 +102,7 @@
             </li>
 
             <li id="menu-item-514">
-                <img src="{{ asset('data/iso.jpeg') }}" alt="Thaya Engineering" style="width: 100px;" />
+                <img src="{{ asset('data/iso.jpeg') }}" alt="Thaya Engineering" style="width: 70px;" />
             </li>
         </ul>
     </div>
